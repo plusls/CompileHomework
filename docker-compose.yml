@@ -5,7 +5,7 @@ services:
     image: llvm_10
     build:
       context: ./
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
     container_name: llvm_10
     cap_add:
       - sys_ptrace
