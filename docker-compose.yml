@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+  llvm:
+    init: true
+    image: llvm_10
+    build:
+      context: ./
+      dockerfile: dockerfile
+    container_name: llvm_10
+    cap_add:
+      - sys_ptrace
+    restart: always
+    ports:
+      - "1022:22"
+    entrypoint:
+      - /bin/bash
+      - -c
+      - /usr/sbin/sshd -D
+networks:
+  default:
+    name: default-bridge
+    driver: bridge
+    driver_opts:
+        com.docker.network.bridge.name: default-bridge
